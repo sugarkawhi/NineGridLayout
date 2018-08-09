@@ -1,0 +1,293 @@
+<?xml version="1.0" encoding="utf-8"?>
+<ScrollView xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical">
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:padding="16dp">
+
+        <!--111111111111-->
+        <TextView
+            style="@style/Title"
+            android:text="@string/_1" />
+
+        <me.sugarkawhi.ninegridlayout.NineGridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_banner" />
+
+        </me.sugarkawhi.ninegridlayout.NineGridLayout>
+
+        <!--2222-->
+        <TextView
+            style="@style/Title"
+            android:text="@string/_2" />
+
+        <me.sugarkawhi.ninegridlayout.NineGridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_dog" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_cat" />
+
+        </me.sugarkawhi.ninegridlayout.NineGridLayout> <!--2222-->
+
+        <!--333333333333333-->
+        <TextView
+            style="@style/Title"
+            android:text="@string/_3" />
+
+        <me.sugarkawhi.ninegridlayout.NineGridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_dog" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_cat" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_deef" />
+
+        </me.sugarkawhi.ninegridlayout.NineGridLayout>
+
+        <!--44444444444444444-->
+        <TextView
+            style="@style/Title"
+            android:text="@string/_4" />
+
+        <me.sugarkawhi.ninegridlayout.NineGridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_banner" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_dog" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_cat" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_deef" />
+
+        </me.sugarkawhi.ninegridlayout.NineGridLayout>
+
+        <!--55555555555555555-->
+        <TextView
+            style="@style/Title"
+            android:text="@string/_5" />
+
+        <me.sugarkawhi.ninegridlayout.NineGridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_bird" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_panda" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_dog" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_cat" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_deef" />
+
+        </me.sugarkawhi.ninegridlayout.NineGridLayout>
+
+        <!--6666666666666666666-->
+        <TextView
+            style="@style/Title"
+            android:text="@string/_6" />
+
+        <me.sugarkawhi.ninegridlayout.NineGridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_bird" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_panda" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_dog" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_cat" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_deef" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_fox" />
+
+        </me.sugarkawhi.ninegridlayout.NineGridLayout>
+
+        <!--7777777777777777-->
+        <TextView
+            style="@style/Title"
+            android:text="@string/_7" />
+
+        <me.sugarkawhi.ninegridlayout.NineGridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_banner" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_bird" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_panda" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_dog" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_cat" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_deef" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_fox" />
+
+        </me.sugarkawhi.ninegridlayout.NineGridLayout>
+
+        <!--88888888888888888-->
+        <TextView
+            style="@style/Title"
+            android:text="@string/_8" />
+
+        <me.sugarkawhi.ninegridlayout.NineGridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_horse" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_bird" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_panda" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_heart" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_dog" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_cat" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_deef" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_fox" />
+
+        </me.sugarkawhi.ninegridlayout.NineGridLayout>
+
+        <!--9999999999999999-->
+        <TextView
+            style="@style/Title"
+            android:text="@string/_9" />
+
+        <me.sugarkawhi.ninegridlayout.NineGridLayout
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content">
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_horse" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_bird" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_panda" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_heart" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_dog" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_cat" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_deef" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_leaf" />
+
+            <ImageView
+                style="@style/Img"
+                android:src="@drawable/ic_fox" />
+
+        </me.sugarkawhi.ninegridlayout.NineGridLayout>
+
+    </LinearLayout>
+</ScrollView>
