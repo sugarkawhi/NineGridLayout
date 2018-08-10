@@ -16,7 +16,9 @@ public abstract class NineGridAdapter {
 
     protected abstract int getItemCount();
 
-    protected void onItemClick(Context context, View view, int position) {
+    protected void onItemClick(View view, int position) {
 
     }
+
+
 }

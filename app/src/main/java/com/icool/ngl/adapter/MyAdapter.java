@@ -1,7 +1,10 @@
 package com.icool.ngl.adapter;
 
+import android.annotation.SuppressLint;
+import android.nfc.Tag;
 import android.support.annotation.NonNull;
 import android.support.v7.widget.RecyclerView;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -10,6 +13,7 @@ import android.widget.TextView;
 
 import com.icool.ngl.R;
 import com.icool.ngl.bean.PostBean;
+import com.squareup.picasso.Picasso;
 
 import java.util.List;
 
@@ -35,30 +39,13 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
         return new MyHolder(view);
     }
 
+    @SuppressLint("DefaultLocale")
     @Override
     public void onBindViewHolder(@NonNull MyHolder holder, int position) {
         final PostBean item = mData.get(position);
-        holder.mTvTitle.setText(item.getTitle() + position);
+        holder.mTvTitle.setText(item.getTitle());
         holder.mTvContent.setText(item.getContent());
-        holder.mNineGridLayout.setNineGridAdapter(new NineGridAdapter() {
-            @Override
-            protected View getItemView(ViewGroup parent, int position) {
-                return LayoutInflater.from(parent.getContext())
-                        .inflate(R.layout.list_item_img, parent, false);
-            }
-
-            @Override
-            protected void bindView(View view, int position) {
-                int id = item.getResIds().get(position);
-                ImageView imageView = view.findViewById(R.id.iv);
-                imageView.setImageResource(id);
-            }
-
-            @Override
-            protected int getItemCount() {
-                return item.getResIds().size();
-            }
-        });
+        holder.mNineGridLayout.setNineGridAdapter(new NineImageAdapter(item.getImgUrls()));
     }
 
     @Override
@@ -76,6 +63,36 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
             mTvTitle = itemView.findViewById(R.id.tv_title);
             mTvContent = itemView.findViewById(R.id.tv_content);
             mNineGridLayout = itemView.findViewById(R.id.ngl);
+        }
+    }
+
+    private static class NineImageAdapter extends NineGridAdapter {
+
+        private List<String> mUrls;
+
+        public NineImageAdapter(List<String> urls) {
+            mUrls = urls;
+        }
+
+        @Override
+        protected View getItemView(ViewGroup parent, int position) {
+            return LayoutInflater.from(parent.getContext()).inflate(R.layout.list_item_img, parent, false);
+        }
+
+        @Override
+        protected void bindView(View view, int position) {
+            String url = mUrls.get(position);
+            ImageView imageView = view.findViewById(R.id.iv);
+            Log.e("Adapter", url);
+            Picasso.with(view.getContext())
+                    .load(url)
+                    .placeholder(R.drawable.ic_heart)
+                    .into(imageView);
+        }
+
+        @Override
+        protected int getItemCount() {
+            return mUrls == null ? 0 : mUrls.size();
         }
     }
 }

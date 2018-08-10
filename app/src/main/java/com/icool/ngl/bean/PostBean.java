@@ -8,12 +8,13 @@ import java.util.List;
  */
 public class PostBean {
 
-    private String title="";
-    private String content="";
+    private String title = "Sooner";
+    private String content = "Sooner or later， we will be passed One people, one city, a lifetime love dearly.";
     private List<Integer> resIds;
+    private List<String> imgUrls;
 
-    public PostBean(List<Integer> resIds) {
-        this.resIds = resIds;
+    public PostBean(List<String> imgUrls) {
+        this.imgUrls = imgUrls;
     }
 
     public String getTitle() {
@@ -38,5 +39,13 @@ public class PostBean {
 
     public void setResIds(List<Integer> resIds) {
         this.resIds = resIds;
+    }
+
+    public List<String> getImgUrls() {
+        return imgUrls;
+    }
+
+    public void setImgUrls(List<String> imgUrls) {
+        this.imgUrls = imgUrls;
     }
 }

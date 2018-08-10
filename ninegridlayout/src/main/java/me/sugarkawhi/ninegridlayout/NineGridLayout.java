@@ -3,8 +3,13 @@ package me.sugarkawhi.ninegridlayout;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.util.AttributeSet;
+import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.ImageView;
+
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * @author zhzy
@@ -12,7 +17,7 @@ import android.view.ViewGroup;
  * Created by zhzy on 2018/8/9.
  */
 public class NineGridLayout extends ViewGroup {
-
+    private static final String TAG = "NineGridLayout";
     //宽
     private int mWidth;
     //高
@@ -23,6 +28,7 @@ public class NineGridLayout extends ViewGroup {
     private int mOneChildHeight;
     //适配器
     private NineGridAdapter mNineGridAdapter;
+
 
     public NineGridLayout(Context context) {
         this(context, null);
@@ -52,9 +58,83 @@ public class NineGridLayout extends ViewGroup {
                 mWidth = MeasureSpec.getSize(widthMeasureSpec);
                 break;
         }
-        mHeight = calHeight(mWidth);
+        setChildSize();
         measureChildren(widthMeasureSpec, heightMeasureSpec);
+        mHeight = calHeight(mWidth);
         setMeasuredDimension(mWidth, mHeight);
+    }
+
+
+    /**
+     * 设置子View的大小
+     */
+    private void setChildSize() {
+        int childCount = getChildCount();
+        switch (childCount) {
+            case 1:
+            case 4:
+            case 7:
+                measure147Children();
+                break;
+            case 2:
+            case 5:
+            case 8:
+                measure258Children();
+                break;
+            case 3:
+            case 6:
+            case 9:
+                measure369Children();
+                break;
+        }
+    }
+
+    private void measure147Children() {
+        int oneWidth = mWidth;
+        int oneHeight = mOneChildHeight;
+        int threeSize = (mWidth - mGridSpace * 2) / 3;
+        View firstChild = getChildAt(0);
+        LayoutParams firstLp = firstChild.getLayoutParams();
+        firstLp.width = oneWidth;
+        firstLp.height = oneHeight;
+        firstChild.setLayoutParams(firstLp);
+        for (int i = 1; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            LayoutParams lp = child.getLayoutParams();
+            lp.width = threeSize;
+            lp.height = threeSize;
+            child.setLayoutParams(lp);
+        }
+    }
+
+    private void measure258Children() {
+        int twoSize = (mWidth - mGridSpace) / 2;
+        int threeSize = (mWidth - mGridSpace * 2) / 3;
+        for (int i = 0; i < 2; i++) {
+            View child = getChildAt(i);
+            LayoutParams lp = child.getLayoutParams();
+            lp.width = twoSize;
+            lp.height = twoSize;
+            child.setLayoutParams(lp);
+        }
+        for (int i = 2; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            LayoutParams lp = child.getLayoutParams();
+            lp.width = threeSize;
+            lp.height = threeSize;
+            child.setLayoutParams(lp);
+        }
+    }
+
+    private void measure369Children() {
+        int threeSize = (mWidth - mGridSpace * 2) / 3;
+        for (int i = 0; i < getChildCount(); i++) {
+            View child = getChildAt(i);
+            LayoutParams lp = child.getLayoutParams();
+            lp.width = threeSize;
+            lp.height = threeSize;
+            child.setLayoutParams(lp);
+        }
     }
 
 
@@ -74,6 +154,11 @@ public class NineGridLayout extends ViewGroup {
                 break;
             case 1:
                 height = mOneChildHeight;
+                View child = getChildAt(0);
+                LayoutParams lp = child.getLayoutParams();
+                lp.width = mWidth;
+                lp.height = mOneChildHeight;
+                child.setLayoutParams(lp);
                 break;
             case 2:
                 height = (width - mGridSpace) / 2;
@@ -115,53 +200,21 @@ public class NineGridLayout extends ViewGroup {
         int childCount = getChildCount();
         switch (childCount) {
             case 1:
-                layoutOneChild();
+            case 4:
+            case 7:
+                layoutOneAndFourAndSevenChildren();
                 break;
             case 2:
-                layoutTwoChildren();
+            case 5:
+            case 8:
+                layoutTwoAndFiveAndEightChildren();
                 break;
             case 3:
             case 6:
             case 9:
                 layoutThreeMultipleChildren();
                 break;
-            case 4:
-            case 7:
-                layoutFourAndSevenChildren();
-                break;
-            case 5:
-            case 8:
-                layoutFiveAndEightChildren();
-                break;
         }
-    }
-
-    /**
-     * 只有一个子View的时候的布局
-     */
-    private void layoutOneChild() {
-        View child = getChildAt(0);
-        LayoutParams lp = child.getLayoutParams();
-        lp.width = mWidth;
-        lp.height = mOneChildHeight;
-        child.setLayoutParams(lp);
-        child.layout(0, 0, mWidth, mOneChildHeight);
-    }
-
-    /**
-     * 布局两个子View
-     */
-    private void layoutTwoChildren() {
-        int singleSize = (mWidth - mGridSpace) / 2;//单个的尺寸
-        View child1 = getChildAt(0);
-        LayoutParams lp = child1.getLayoutParams();
-        lp.width = singleSize;
-        lp.height = singleSize;
-        child1.setLayoutParams(lp);
-        child1.layout(0, 0, singleSize, singleSize);
-        View child2 = getChildAt(1);
-        child2.setLayoutParams(lp);
-        child2.layout(singleSize + mGridSpace, 0, mWidth, singleSize);
     }
 
     /**
@@ -187,10 +240,11 @@ public class NineGridLayout extends ViewGroup {
     }
 
     /**
-     * 布局4/7个子View
+     * 布局1/4/7个子View
      */
-    private void layoutFourAndSevenChildren() {
-        layoutOneChild();
+    private void layoutOneAndFourAndSevenChildren() {
+        View firstChild = getChildAt(0);
+        firstChild.layout(0, 0, mWidth, mOneChildHeight);
         int singleSize = (mWidth - mGridSpace * 2) / 3;//单个的尺寸
         int childCount = getChildCount();
         for (int i = 1; i < childCount; i++) {
@@ -201,20 +255,23 @@ public class NineGridLayout extends ViewGroup {
             int top = mOneChildHeight + mGridSpace + rowCount * (singleSize + mGridSpace);
             int right = left + singleSize;
             int bottom = top + singleSize;
-            LayoutParams lp = child.getLayoutParams();
-            lp.width = singleSize;
-            lp.height = singleSize;
-            child.setLayoutParams(lp);
             child.layout(left, top, right, bottom);
         }
     }
 
     /**
-     * 布局5/8个子View
+     * 布局2/5/8个子View
      */
-    private void layoutFiveAndEightChildren() {
-        layoutTwoChildren();
-        int top2Size = (mWidth - mGridSpace) / 2;//前两个子View的尺寸
+    private void layoutTwoAndFiveAndEightChildren() {
+        int top2singleSize = (mWidth - mGridSpace) / 2;//前两个单个的尺寸
+        for (int i = 0; i < 2; i++) {
+            View child = getChildAt(i);
+            int left = i * (top2singleSize + mGridSpace);
+            int top = 0;
+            int right = left + top2singleSize;
+            int bottom = top + top2singleSize;
+            child.layout(left, top, right, bottom);
+        }
         int singleSize = (mWidth - mGridSpace * 2) / 3;//单个的尺寸
         int childCount = getChildCount();
         for (int i = 2; i < childCount; i++) {
@@ -222,27 +279,72 @@ public class NineGridLayout extends ViewGroup {
             int columnCount = (i - 2) % 3;//列
             View child = getChildAt(i);
             int left = columnCount * (singleSize + mGridSpace);
-            int top = top2Size + mGridSpace + rowCount * (singleSize + mGridSpace);
+            int top = top2singleSize + mGridSpace + rowCount * (singleSize + mGridSpace);
             int right = left + singleSize;
             int bottom = top + singleSize;
+            child.layout(left, top, right, bottom);
             LayoutParams lp = child.getLayoutParams();
             lp.width = singleSize;
             lp.height = singleSize;
             child.setLayoutParams(lp);
-            child.layout(left, top, right, bottom);
         }
+
+    }
+
+    public void setNineGridAdapter(NineGridAdapter nineGridAdapter) {
+        if (nineGridAdapter == null) return;
+        //Log.e(TAG, "setNineGridAdapter " + System.currentTimeMillis());
+        mNineGridAdapter = nineGridAdapter;
+        removeAllViews();
+        int childCount = getChildCount();
+        int count = mNineGridAdapter.getItemCount();
+        if (childCount > count) {
+            removeViews(count, childCount - count);
+        } else if (childCount < count) {
+            for (int i = childCount; i < count; i++) {
+                View view = getItemView(i);
+                addView(view);
+            }
+        }
+        for (int i = 0; i < count; i++) {
+            mNineGridAdapter.bindView(getChildAt(i), i);
+        }
+//        int count = mNineGridAdapter.getItemCount();
+//        int childCount = getChildCount();
+//        if (childCount > count) {
+//            removeViews(count, childCount - count);
+//        } else if (childCount < count) {
+//            for (int i = childCount; i < count; i++) {
+//                View view = getItemView(i);
+//                addView(view);
+//            }
+//        }
+//        if (mNineGridAdapter != null) {
+//            for (int i = 0; i < childCount; i++) {
+//                Log.e(TAG, "childCount = " + childCount + " bindView > " + i);
+//                mNineGridAdapter.bindView(getChildAt(i), i);
+//            }
+//        }
+//        requestLayout();
+    }
+
+    public NineGridAdapter getNineGridAdapter() {
+        return mNineGridAdapter;
     }
 
 
-    public void setNineGridAdapter(NineGridAdapter nineGridAdapter) {
-        mNineGridAdapter = nineGridAdapter;
-        int count = nineGridAdapter.getItemCount();
-        removeAllViews();
-        for (int i = 0; i < count; i++) {
-            View view = nineGridAdapter.getItemView(this, i);
-            mNineGridAdapter.bindView(view, i);
-            addView(view, generateDefaultLayoutParams());
+    /**
+     * 获得 ImageView
+     * 保证了 ImageView 的重用
+     *
+     * @param position 位置
+     */
+    private View getItemView(final int position) {
+        if (mNineGridAdapter == null) {
+            Log.e(TAG, "Your must set a NineGridAdapter ");
+            return null;
         }
-        requestLayout();
+        View view = mNineGridAdapter.getItemView(this, position);
+        return view;
     }
 }
