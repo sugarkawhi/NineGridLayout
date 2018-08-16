@@ -10,7 +10,9 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
+import com.icool.ngl.App;
 import com.icool.ngl.R;
 import com.icool.ngl.bean.PostBean;
 import com.squareup.picasso.Picasso;
@@ -93,6 +95,12 @@ public class MyAdapter extends RecyclerView.Adapter<MyAdapter.MyHolder> {
         @Override
         protected int getItemCount() {
             return mUrls == null ? 0 : mUrls.size();
+        }
+
+        @Override
+        protected void onItemClick(View view, int position) {
+            super.onItemClick(view, position);
+            Toast.makeText(App.getInstance(), "position " + position, Toast.LENGTH_SHORT).show();
         }
     }
 }

@@ -1,12 +1,11 @@
 package me.sugarkawhi.ninegridlayout;
 
-import android.content.Context;
 import android.view.View;
 import android.view.ViewGroup;
 
 /**
  * @author zhzy
- * @Description Created by ZhaoZongyao on 2018/8/9.
+ * Created by zhzy on 2018/8/9.
  */
 public abstract class NineGridAdapter {
 
@@ -17,7 +16,6 @@ public abstract class NineGridAdapter {
     protected abstract int getItemCount();
 
     protected void onItemClick(View view, int position) {
-
     }
 
 

@@ -6,14 +6,9 @@ import android.util.AttributeSet;
 import android.util.Log;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageView;
-
-import java.util.ArrayList;
-import java.util.List;
 
 /**
  * @author zhzy
- * @Description 九宫格布局 1-9 布局
  * Created by zhzy on 2018/8/9.
  */
 public class NineGridLayout extends ViewGroup {
@@ -309,23 +304,6 @@ public class NineGridLayout extends ViewGroup {
         for (int i = 0; i < count; i++) {
             mNineGridAdapter.bindView(getChildAt(i), i);
         }
-//        int count = mNineGridAdapter.getItemCount();
-//        int childCount = getChildCount();
-//        if (childCount > count) {
-//            removeViews(count, childCount - count);
-//        } else if (childCount < count) {
-//            for (int i = childCount; i < count; i++) {
-//                View view = getItemView(i);
-//                addView(view);
-//            }
-//        }
-//        if (mNineGridAdapter != null) {
-//            for (int i = 0; i < childCount; i++) {
-//                Log.e(TAG, "childCount = " + childCount + " bindView > " + i);
-//                mNineGridAdapter.bindView(getChildAt(i), i);
-//            }
-//        }
-//        requestLayout();
     }
 
     public NineGridAdapter getNineGridAdapter() {
@@ -345,6 +323,12 @@ public class NineGridLayout extends ViewGroup {
             return null;
         }
         View view = mNineGridAdapter.getItemView(this, position);
+        view.setOnClickListener(new OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                mNineGridAdapter.onItemClick(v, position);
+            }
+        });
         return view;
     }
 }
