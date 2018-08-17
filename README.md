@@ -4,16 +4,19 @@
 
 ## 需求
 
-+ 满足0-9个图的适配
-+ 一张图：撑满
-+ 两张图：平分宽度 
-+ 三张图：平分宽度
-+ 四张图：1+3
-+ 五张图：2+3
-+ 六张图：3+3
-+ 七张图：1+3+3
-+ 八张图：2+3+3
-+ 九张图：3+3+3
+满足0-9个图的适配
+
+| 图数量 | 演示 |
+|:--------:|:--------:|
+|1|![](http://olpu32iyy.bkt.clouddn.com/18-8-17/55121488.jpg)|
+|2|![](http://olpu32iyy.bkt.clouddn.com/18-8-17/47808303.jpg)|
+|3|![](http://olpu32iyy.bkt.clouddn.com/18-8-17/12936626.jpg)|
+|4|![](http://olpu32iyy.bkt.clouddn.com/18-8-17/23344092.jpg)|
+|5|![](http://olpu32iyy.bkt.clouddn.com/18-8-17/61136049.jpg)|
+|6|![](http://olpu32iyy.bkt.clouddn.com/18-8-17/99734645.jpg)|
+|7|![](http://olpu32iyy.bkt.clouddn.com/18-8-17/26160726.jpg)|
+|8|![](http://olpu32iyy.bkt.clouddn.com/18-8-17/20103033.jpg)|
+|9|![](http://olpu32iyy.bkt.clouddn.com/18-8-17/61546409.jpg)|
 
 ## 使用
 
