@@ -63,7 +63,7 @@ public abstract class NineGridAdapter {
 
 ```
 
-eg:通过继承NineGridAdapter 详见demo
+eg:通过继承 `NineGridAdapter` 详见demo
 
 ```JAVA
    private static class NineImageAdapter extends NineGridAdapter {
